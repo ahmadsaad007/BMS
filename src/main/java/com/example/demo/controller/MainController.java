@@ -13,15 +13,15 @@ public class MainController {
 
     @GetMapping("/")
     public String welcome(Map<String, Object> model) {
-        //Long isbn = Long.valueOf(1234567890);
-        //model.put("book", Book.builder().name("How to not worry about Assignments in BFS Training!").author("Zack Yu").date("09/10/2020").isbn(isbn).build());
         model.put("newBook", new Book());
-
+        model.put("updateBook", new Book());
+        model.put("addBook",new Book());
         return "home";
     }
 
     @PostMapping("/get")
-    public String change(@RequestParam("author") String author, Model model, @ModelAttribute("newBook")Book book) {
+    public String change(@RequestParam("author") String author, Model model,
+                         @ModelAttribute("newBook")Book book) {
         System.out.println(author);
         Book b = BookDao.getBook(book.getAuthor(), book.getDate());
         if(b == null){
@@ -32,10 +32,12 @@ public class MainController {
         return "home";
     }
     @RequestMapping("/add")
-    public String addBook(@RequestParam("author") String author, @RequestParam("isbn") int isbn, Model model, @ModelAttribute("book") Book book){
+    public String addBook(@RequestParam("author") String author, @RequestParam("isbn") int isbn, Model model,
+                          @ModelAttribute("addBook") Book book){
         System.out.println("Author: "+author + " ISBN: "+isbn);
-        //model.getAttribute("name")
+        model.addAttribute("addBook", new Book());
         Book b= new Book(book.getName(), author,isbn, book.getDate());
+        model.addAttribute("add", book);
         boolean result = BookDao.addBook(b);
         if(result)
             return "home";
@@ -43,9 +45,12 @@ public class MainController {
             return "error";
     }
     @RequestMapping("/update")
-    public String updateBook(@RequestParam("author") String author, @RequestParam("isbn") int isbn, Model model, @ModelAttribute("newBook") Book book){
+    public String updateBook(@RequestParam("author") String author, @RequestParam("isbn") int isbn, Model model,
+                             @ModelAttribute("updateBook") Book book){
         System.out.println("Author: "+author + " ISBN: "+isbn);
         Book b= new Book(book.getName(), author,isbn, book.getDate());
+        model.addAttribute("updateBook", new Book());
+        model.addAttribute("update",b);
         BookDao.updateBook(isbn, b);
         return "home";
     }

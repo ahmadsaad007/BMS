@@ -13,33 +13,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
-    <title>Add Book</title>
+    <title>Update</title>
 </head>
 <body>
-
-<h1>Add a Book</h1>
-
-<form:form method="POST" action="/add">
-        <div class="form-group">
-            <label for="nameInput">Name</label>
-            <form:input path="name" cssClass="form-control" id="nameInput"></form:input>
-        </div>
+<form:form method="POST" action="/update" modelAttribute="third">
     <div class="form-group">
-        <label for="authorInput">Author</label>
-        <form:input path="author" cssClass="form-control" id="authorInput"></form:input>
+        <label for="authorInput">ISBN</label>
+        <form:input path="isbn" cssClass="form-control" id="authorInput"></form:input>
     </div>
-    <div class="form-group">
-        <label for="isbnInput">ISBN</label>
-        <form:input path="isbn" cssClass="form-control" id="isbnInput"></form:input>
-    </div>
-    <div class="form-group">
-        <label for="dateInput">Date</label>
-        <form:input path="date" cssClass="form-control" id="dateInput"></form:input>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">Update Book</button>
 </form:form>
-
-
 </body>
 </html>
