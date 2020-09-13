@@ -39,8 +39,8 @@
     </div>
     <button type="submit" class="btn btn-primary">Get Book</button>
 </form:form>
-<a  href ="../add.jsp"><button type="submit" class="btn btn-primary">Add Book</button></a>
-<a  href ="../update.jsp"><button type="submit" class="btn btn-primary">Update Book</button></a>
+<a  href ="/add"><button type="submit" class="btn btn-primary">Add Book</button></a>
+<a  href ="/update"><button type="submit" class="btn btn-primary">Update Book</button></a>
 </body>
 
 </html>

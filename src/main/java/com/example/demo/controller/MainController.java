@@ -11,15 +11,13 @@ import java.util.Map;
 @Controller
 public class MainController {
 
-    @GetMapping("/")
+    @GetMapping(value = "/")
     public String welcome(Map<String, Object> model) {
         model.put("newBook", new Book());
-        model.put("updateBook", new Book());
-        model.put("addBook",new Book());
         return "home";
     }
 
-    @PostMapping("/get")
+    @PostMapping(value = "/get")
     public String change(@RequestParam("author") String author, Model model,
                          @ModelAttribute("newBook")Book book) {
         System.out.println(author);
@@ -31,7 +29,14 @@ public class MainController {
         model.addAttribute("newBook", new Book());
         return "home";
     }
-    @RequestMapping("/add")
+
+    @GetMapping("/add")
+    public String show(Model model) {
+        model.addAttribute("addBook", new Book());
+        return "add";
+    }
+
+    @PostMapping(value = "/add")
     public String addBook(@RequestParam("author") String author, @RequestParam("isbn") int isbn, Model model,
                           @ModelAttribute("addBook") Book book){
         System.out.println("Author: "+author + " ISBN: "+isbn);
@@ -44,7 +49,14 @@ public class MainController {
         else
             return "error";
     }
-    @RequestMapping("/update")
+
+    @GetMapping("/update")
+    public String showUpdate(Model model) {
+        model.addAttribute("updateBook", new Book());
+        return "update";
+    }
+
+    @PostMapping( value = "/update")
     public String updateBook(@RequestParam("author") String author, @RequestParam("isbn") int isbn, Model model,
                              @ModelAttribute("updateBook") Book book){
         System.out.println("Author: "+author + " ISBN: "+isbn);
@@ -54,4 +66,6 @@ public class MainController {
         BookDao.updateBook(isbn, b);
         return "home";
     }
+
+
 }

@@ -16,10 +16,22 @@
     <title>Update</title>
 </head>
 <body>
-<form:form method="POST" action="/update" modelAttribute="third">
+<form:form method="POST" action="/update" modelAttribute="updateBook">
     <div class="form-group">
         <label for="authorInput">ISBN</label>
         <form:input path="isbn" cssClass="form-control" id="authorInput"></form:input>
+    </div>
+    <div class="form-group">
+        <label for="nameInput">Name</label>
+        <form:input path="name" cssClass="form-control" id="nameInput"></form:input>
+    </div>
+    <div class="form-group">
+        <label for="authorInput">Author</label>
+        <form:input path="author" cssClass="form-control" id="authorInput"></form:input>
+    </div>
+    <div class="form-group">
+        <label for="dateInput">Date</label>
+        <form:input path="date" cssClass="form-control" id="dateInput"></form:input>
     </div>
     <button type="submit" class="btn btn-primary">Update Book</button>
 </form:form>

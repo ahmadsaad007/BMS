@@ -19,7 +19,7 @@
 
 <h1>Add a Book</h1>
 
-<form:form method="POST" action="/add" modelAttribute="newBook">
+<form:form method="POST" action="/add" modelAttribute="addBook">
         <div class="form-group">
             <label for="nameInput">Name</label>
             <form:input path="name" cssClass="form-control" id="nameInput"></form:input>
